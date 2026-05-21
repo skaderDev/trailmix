@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Morning Hike",
+    "description": "A simple local trail for fresh air and light movement.",
+    "category": "Solo",
+    "location": "Local park",
+    "tags": ["Outdoors", "Low cost", "Active"]
+  },
+  {
+    "id": 2,
+    "title": "Coffee Shop Sketch Date",
+    "description": "Bring notebooks, pick prompts, and sketch together for an hour.",
+    "category": "Partner",
+    "location": "Cafe",
+    "tags": ["Creative", "Relaxed", "Indoor"]
+  },
+  {
+    "id": 3,
+    "title": "Board Game Night",
+    "description": "A casual group night built around easy-to-learn games.",
+    "category": "Group",
+    "location": "Home",
+    "tags": ["Social", "Indoor", "Evening"]
+  },
+  {
+    "id": 4,
+    "title": "Museum Slow Walk",
+    "description": "Pick one exhibit and take your time reading, sketching, and wandering.",
+    "category": "Solo",
+    "location": "Museum",
+    "tags": ["Calm", "Culture", "Indoor"]
+  },
+  {
+    "id": 5,
+    "title": "Picnic at Sunset",
+    "description": "Pack simple food, choose a scenic spot, and stay through golden hour.",
+    "category": "Partner",
+    "location": "Park",
+    "tags": ["Romantic", "Outdoors", "Low cost"]
+  },
+  {
+    "id": 6,
+    "title": "Escape Room",
+    "description": "Work together to solve puzzles under a time limit.",
+    "category": "Group",
+    "location": "Entertainment venue",
+    "tags": ["Puzzle", "Teamwork", "Indoor"]
+  },
+  {
+    "id": 7,
+    "title": "Farmers Market Loop",
+    "description": "Browse stalls, try a snack, and pick one ingredient for dinner.",
+    "category": "Solo",
+    "location": "Market",
+    "tags": ["Food", "Weekend", "Walkable"]
+  },
+  {
+    "id": 8,
+    "title": "Mini Golf",
+    "description": "A low-pressure activity with built-in conversation and light competition.",
+    "category": "Partner",
+    "location": "Mini golf course",
+    "tags": ["Playful", "Casual", "Outdoors"]
+  },
+  {
+    "id": 9,
+    "title": "Potluck Dinner",
+    "description": "Everyone brings one dish and shares the story behind it.",
+    "category": "Group",
+    "location": "Home",
+    "tags": ["Food", "Social", "Budget friendly"]
+  },
+  {
+    "id": 10,
+    "title": "Library Reading Hour",
+    "description": "Choose a book, find a quiet table, and read without distractions.",
+    "category": "Solo",
+    "location": "Library",
+    "tags": ["Quiet", "Free", "Indoor"]
+  },
+  {
+    "id": 11,
+    "title": "Cooking Class",
+    "description": "Learn a new recipe together with an instructor and shared prep stations.",
+    "category": "Partner",
+    "location": "Cooking studio",
+    "tags": ["Food", "Hands-on", "Learning"]
+  },
+  {
+    "id": 12,
+    "title": "Trivia Night",
+    "description": "Join a local trivia event and split topics across the group.",
+    "category": "Group",
+    "location": "Pub",
+    "tags": ["Social", "Evening", "Competition"]
+  },
+  {
+    "id": 13,
+    "title": "Photo Walk",
+    "description": "Pick a neighborhood and capture interesting textures, signs, and light.",
+    "category": "Solo",
+    "location": "Downtown",
+    "tags": ["Creative", "Walkable", "Outdoors"]
+  },
+  {
+    "id": 14,
+    "title": "Kayak Rental",
+    "description": "Rent kayaks for a short route on calm water.",
+    "category": "Partner",
+    "location": "Lake",
+    "tags": ["Active", "Water", "Outdoors"]
+  },
+  {
+    "id": 15,
+    "title": "Volunteer Shift",
+    "description": "Sign up for a short community volunteer session together.",
+    "category": "Group",
+    "location": "Community center",
+    "tags": ["Community", "Meaningful", "Daytime"]
+  }
+]
