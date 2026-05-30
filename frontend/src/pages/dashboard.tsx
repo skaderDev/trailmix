@@ -1,14 +1,39 @@
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { ErrorState } from "../components/error-state"
 import { Grid } from "../components/grid"
+import { LoadingState } from "../components/loading-state"
 import  Card  from "../components/card"
 import  Navbar  from "../components/navbar"
-import activities from "../data/activities.json"
+import type { Activity } from "../types/activity"
 import { getSavedActivityIds, saveActivityId } from "../utils/favorites"
 
 export default function Dashboard() {
     const [savedIds, setSavedIds] = useState(getSavedActivityIds);
+    const [activities, setActivities] = useState<Activity[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        async function loadActivities() {
+            try {
+                const response = await fetch("/api/activities");
+
+                if (!response.ok) {
+                    throw new Error("Could not load activities");
+                }
+
+                const data = await response.json() as Activity[];
+                setActivities(data);
+            } catch {
+                setError("Could not load activities.");
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        loadActivities();
+    }, []);
 
     function saveActivity(activityId: number) {
         setSavedIds(saveActivityId(activityId));
@@ -31,32 +56,38 @@ export default function Dashboard() {
                     </p>
                 </section>
 
-                <Grid>
-                    {activities.map((activity) => (
-                        <Card
-                            key={activity.id}
-                            title={activity.title}
-                            subtitle={`${activity.category} - ${activity.location}`}
-                            chips={activity.tags}
-                            footer={
-                                <>
-                                    <Link
-                                        to={`/activities/${activity.id}`}
-                                        className="text-sm font-semibold text-emerald-800"
-                                    >
-                                        View details
-                                    </Link>
-                                    <button
-                                        onClick={() => saveActivity(activity.id)}
-                                        className="rounded-full bg-emerald-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-800"
-                                    >
-                                        {savedIds.includes(activity.id) ? "Saved" : "Save"}
-                                    </button>
-                                </>
-                            }
-                        />
-                    ))}
-                </Grid>
+                {isLoading && <LoadingState message="Loading activities..." />}
+
+                {error && <ErrorState message={error} />}
+
+                {!isLoading && !error && (
+                    <Grid>
+                        {activities.map((activity) => (
+                            <Card
+                                key={activity.id}
+                                title={activity.title}
+                                subtitle={`${activity.category} - ${activity.location}`}
+                                chips={activity.tags}
+                                footer={
+                                    <>
+                                        <Link
+                                            to={`/activities/${activity.id}`}
+                                            className="text-sm font-semibold text-emerald-800"
+                                        >
+                                            View details
+                                        </Link>
+                                        <button
+                                            onClick={() => saveActivity(activity.id)}
+                                            className="rounded-full bg-emerald-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-emerald-800"
+                                        >
+                                            {savedIds.includes(activity.id) ? "Saved" : "Save"}
+                                        </button>
+                                    </>
+                                }
+                            />
+                        ))}
+                    </Grid>
+                )}
             </main>
         </div>
     )

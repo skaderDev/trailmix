@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ErrorState } from "../components/error-state";
+import { LoadingState } from "../components/loading-state";
 import Navbar from "../components/navbar";
-import activities from "../data/activities.json";
+import type { Activity } from "../types/activity";
 import { getSavedActivityIds, saveActivityId } from "../utils/favorites";
 
 const initialComments = [
@@ -17,9 +19,32 @@ const initialComments = [
 
 export default function ActivityDetail() {
   const { activityId } = useParams();
-  const activity = activities.find((item) => item.id === Number(activityId));
+  const [activity, setActivity] = useState<Activity | null>(null);
   const [comments, setComments] = useState(initialComments);
   const [savedIds, setSavedIds] = useState(getSavedActivityIds);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadActivity() {
+      try {
+        const response = await fetch(`/api/activities/${activityId}`);
+
+        if (!response.ok) {
+          throw new Error("Could not load activity");
+        }
+
+        const data = (await response.json()) as Activity;
+        setActivity(data);
+      } catch {
+        setError("Could not load activity.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadActivity();
+  }, [activityId]);
 
   function updateComment(index: number, text: string) {
     setComments((currentComments) =>
@@ -33,12 +58,24 @@ export default function ActivityDetail() {
     setSavedIds(saveActivityId(activityId));
   }
 
-  if (!activity) {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[linear-gradient(180deg,#eef5ec_0%,#f8fafc_42%,#f6f2e9_100%)]">
+        <Navbar />
+        <main className="p-8 text-left">
+          <LoadingState message="Loading activity..." />
+        </main>
+      </div>
+    );
+  }
+
+  if (error || !activity) {
     return (
       <div>
         <Navbar />
         <main className="p-8 text-left">
           <h1>Activity not found</h1>
+          {error && <ErrorState message={error} />}
           <Link to="/dashboard">Back to Discover</Link>
         </main>
       </div>
