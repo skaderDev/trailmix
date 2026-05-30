@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Morning Hike",
+    "description": "A simple local trail for fresh air and light movement.",
+    "category": "Solo",
+    "location": "Local park",
+    "tags": ["Outdoors", "Low cost", "Active"]
+  },
+  {
+    "id": 2,
+    "title": "Coffee Shop Sketch Date",
+    "description": "Bring notebooks, pick prompts, and sketch together for an hour.",
+    "category": "Partner",
+    "location": "Cafe",
+    "tags": ["Creative", "Relaxed", "Indoor"]
+  },
+  {
+    "id": 3,
+    "title": "Board Game Night",
+    "description": "A casual group night built around easy-to-learn games.",
+    "category": "Group",
+    "location": "Home",
+    "tags": ["Social", "Indoor", "Evening"]
+  },
+  {
+    "id": 4,
+    "title": "Picnic at Sunset",
+    "description": "Pack simple food, choose a scenic spot, and stay through golden hour.",
+    "category": "Partner",
+    "location": "Park",
+    "tags": ["Romantic", "Outdoors", "Low cost"]
+  },
+  {
+    "id": 5,
+    "title": "Trivia Night",
+    "description": "Join a local trivia event and split topics across the group.",
+    "category": "Group",
+    "location": "Pub",
+    "tags": ["Social", "Evening", "Competition"]
+  }
+]
